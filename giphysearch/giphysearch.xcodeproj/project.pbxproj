@@ -22,10 +22,10 @@
 		3A8749531DF0AB9D0085E7A4 /* GifPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8749521DF0AB9D0085E7A4 /* GifPresenter.swift */; };
 		3A8749571DF0AFAF0085E7A4 /* GifService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8749561DF0AFAF0085E7A4 /* GifService.swift */; };
 		3A8749591DF0AFC80085E7A4 /* GifSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8749581DF0AFC80085E7A4 /* GifSearchService.swift */; };
-		3A90633E1DF1BC3400F2ADCF /* GifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90633C1DF1BC3400F2ADCF /* GifTableViewCell.swift */; };
-		3A90633F1DF1BC3400F2ADCF /* GifTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A90633D1DF1BC3400F2ADCF /* GifTableViewCell.xib */; };
 		3A9063421DF1D5FF00F2ADCF /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9063401DF1D5FF00F2ADCF /* Kingfisher.framework */; };
 		3A9063431DF1D5FF00F2ADCF /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9063411DF1D5FF00F2ADCF /* SnapKit.framework */; };
+		3ABE0CB81DF5C5C3004FCDC8 /* GifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE0CB61DF5C5C3004FCDC8 /* GifTableViewCell.swift */; };
+		3ABE0CB91DF5C5C3004FCDC8 /* GifTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE0CB71DF5C5C3004FCDC8 /* GifTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +58,10 @@
 		3A8749521DF0AB9D0085E7A4 /* GifPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GifPresenter.swift; path = Classes/GifPresenter.swift; sourceTree = "<group>"; };
 		3A8749561DF0AFAF0085E7A4 /* GifService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifService.swift; sourceTree = "<group>"; };
 		3A8749581DF0AFC80085E7A4 /* GifSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifSearchService.swift; sourceTree = "<group>"; };
-		3A90633C1DF1BC3400F2ADCF /* GifTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GifTableViewCell.swift; path = Classes/GifTableViewCell.swift; sourceTree = "<group>"; };
-		3A90633D1DF1BC3400F2ADCF /* GifTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GifTableViewCell.xib; path = Classes/GifTableViewCell.xib; sourceTree = "<group>"; };
 		3A9063401DF1D5FF00F2ADCF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		3A9063411DF1D5FF00F2ADCF /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		3ABE0CB61DF5C5C3004FCDC8 /* GifTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GifTableViewCell.swift; path = Classes/GifTableViewCell.swift; sourceTree = "<group>"; };
+		3ABE0CB71DF5C5C3004FCDC8 /* GifTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GifTableViewCell.xib; path = Classes/GifTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +159,8 @@
 				3A091ECA1DC1284F00B9DABE /* Main.storyboard */,
 				3A87494B1DF0A3C90085E7A4 /* GifSearchViewController.swift */,
 				3A87494F1DF0A5C20085E7A4 /* GifView.swift */,
-				3A90633C1DF1BC3400F2ADCF /* GifTableViewCell.swift */,
-				3A90633D1DF1BC3400F2ADCF /* GifTableViewCell.xib */,
+				3ABE0CB61DF5C5C3004FCDC8 /* GifTableViewCell.swift */,
+				3ABE0CB71DF5C5C3004FCDC8 /* GifTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 			files = (
 				3A091ED11DC1284F00B9DABE /* LaunchScreen.storyboard in Resources */,
 				3A091ECE1DC1284F00B9DABE /* Assets.xcassets in Resources */,
-				3A90633F1DF1BC3400F2ADCF /* GifTableViewCell.xib in Resources */,
+				3ABE0CB91DF5C5C3004FCDC8 /* GifTableViewCell.xib in Resources */,
 				3A091ECC1DC1284F00B9DABE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,7 +330,7 @@
 				3A8749501DF0A5C20085E7A4 /* GifView.swift in Sources */,
 				3A091EF21DC144EF00B9DABE /* Gif.swift in Sources */,
 				3A091EF41DC1481200B9DABE /* Utils.swift in Sources */,
-				3A90633E1DF1BC3400F2ADCF /* GifTableViewCell.swift in Sources */,
+				3ABE0CB81DF5C5C3004FCDC8 /* GifTableViewCell.swift in Sources */,
 				3A87494C1DF0A3C90085E7A4 /* GifSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

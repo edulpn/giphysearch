@@ -14,7 +14,7 @@ class GifSearchService: GifService {
     
     func retrieveGifs(filter: String, success: @escaping ([Gif]) -> Void, failure: @escaping (Error) -> Void) {
         
-        Alamofire.request("http://api.giphy.com/v1/gifs/search", method: .get, parameters: ["q" : filter, "api_key" : "dc6zaTOxFJmzC"], encoding: URLEncoding(destination: .queryString)).responseJSON { (response) in
+        Alamofire.request("https://api.giphy.com/v1/gifs/search", method: .get, parameters: ["q" : filter, "api_key" : "dc6zaTOxFJmzC"], encoding: URLEncoding(destination: .queryString)).responseJSON { (response) in
             
             switch response.result {
                 case .success(let value):
@@ -33,7 +33,7 @@ class GifSearchService: GifService {
     
     func retrieveTrendingGifs(success: @escaping ([Gif]) -> Void, failure: @escaping (Error) -> Void) {
         
-        Alamofire.request("http://api.giphy.com/v1/gifs/trending", method: .get, parameters: ["api_key" : "dc6zaTOxFJmzC"], encoding: URLEncoding(destination: .queryString)).responseJSON { (response) in
+        Alamofire.request("https://api.giphy.com/v1/gifs/trending", method: .get, parameters: ["api_key" : "dc6zaTOxFJmzC"], encoding: URLEncoding(destination: .queryString)).responseJSON { (response) in
             
             switch response.result {
             case .success(let value):
@@ -53,7 +53,7 @@ class GifSearchService: GifService {
     func gifs(from: JSON) -> [Gif] {
     
         var gifs : [Gif] = []
-        for (_,gifJson):(String, JSON) in from {
+        for (_,gifJson):(String, JSON) in from["data"] {
             
             gifs.append(Gif(json: gifJson))
         }

@@ -24,7 +24,6 @@ class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, U
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "GifTableViewCell", bundle: nil), forCellReuseIdentifier: gifCellIdentifier)
         
@@ -58,6 +57,11 @@ class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, U
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 200.0
+    }
+    
     // MARK: - GifView Protocol
     func startLoading() {
         self.loadingView.isHidden = false;
@@ -77,15 +81,21 @@ class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, U
         let alert = UIAlertController(title: "", message: error, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
+            alert.dismiss(animated: true, completion: {})
         }))
         
-        self.navigationController?.present(alert, animated: true, completion: nil)
+        self.navigationController?.present(alert, animated: true, completion: {})
     }
     
     // MARK: - Text Field Delegate
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
         self.gifPresenter.searchGifs(query: textField.text!)
     }
     

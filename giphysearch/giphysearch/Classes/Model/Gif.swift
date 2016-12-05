@@ -17,7 +17,7 @@ class Gif: NSObject {
     var downSampledGifUrl : String
     
     init(json: JSON) {
-        
+
         self.id = json["id"].stringValue
         self.importDate = Utils.date(from: json["import_datetime"].stringValue)
         self.source = json["source"].stringValue

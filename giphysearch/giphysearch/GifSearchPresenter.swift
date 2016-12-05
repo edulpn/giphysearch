@@ -39,18 +39,19 @@ class GifSearchPresenter: GifPresenter
                 
             })
         }
-        
-        self.service.retrieveGifs(filter: query, success: { gifs in
-            
-            self.gifs = gifs
-            self.view.finishLoading()
-            self.view.setSearchResult(gifs: self.gifDisplays(from: gifs))
-            
-        }, failure: { error in
-            
-            self.view.finishLoading()
-            self.view.setSearchError(error: error.localizedDescription)
-        })
+        else {
+            self.service.retrieveGifs(filter: query, success: { gifs in
+                
+                self.gifs = gifs
+                self.view.finishLoading()
+                self.view.setSearchResult(gifs: self.gifDisplays(from: gifs))
+                
+            }, failure: { error in
+                
+                self.view.finishLoading()
+                self.view.setSearchError(error: error.localizedDescription)
+            })
+        }
     }
     
     func gifDisplays(from: [Gif]) -> [GifDisplay] {
