@@ -50,7 +50,7 @@ class GifSearchService: GifService {
         }
     }
     
-    func gifs(from: JSON) -> [Gif] {
+    private func gifs(from: JSON) -> [Gif] {
     
         var gifs : [Gif] = []
         for (_,gifJson):(String, JSON) in from["data"] {

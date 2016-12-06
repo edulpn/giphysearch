@@ -10,8 +10,12 @@ import UIKit
 
 class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    var gifs : [GifDisplay] = []
-    var gifPresenter : GifPresenter!
+    var gifs : [GifDisplay] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var gifPresenter : GifPresenter?
     
     let gifCellIdentifier : String = "gifCellIdentifier"
     
@@ -22,18 +26,22 @@ class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.separatorStyle = .none
-        self.tableView.register(UINib(nibName: "GifTableViewCell", bundle: nil), forCellReuseIdentifier: gifCellIdentifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "GifTableViewCell", bundle: nil), forCellReuseIdentifier: gifCellIdentifier)
         
-        self.loadingView.isHidden = true
+        loadingView.isHidden = true
         
-        self.searchTextField.delegate = self
+        searchTextField.delegate = self
         
-        self.gifPresenter.searchGifs(query: self.searchTextField.text!)
+        guard (gifPresenter != nil) else {
+            
+            //We reached a place where the presenter dependency should be already injected, so return
+            return
+        }
         
-        // Do any additional setup after loading the view.
+        gifPresenter!.searchGifs(query: self.searchTextField.text!)
     }
     
     // MARK: - Table View Delegate/Datasource
@@ -44,13 +52,13 @@ class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        return self.gifs.count
+        return gifs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: gifCellIdentifier, for: indexPath) as! GifTableViewCell
-        let gifDisplay = self.gifs[indexPath.row]
+        let gifDisplay = gifs[indexPath.row]
         
         cell.configureGifCell(gifUrl: gifDisplay.imageUrl, source: gifDisplay.source, date: gifDisplay.date)
         
@@ -64,16 +72,16 @@ class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, U
     
     // MARK: - GifView Protocol
     func startLoading() {
-        self.loadingView.isHidden = false;
+        loadingView.isHidden = false;
     }
     
     func finishLoading() {
-        self.loadingView.isHidden = true;
+        loadingView.isHidden = true;
     }
     
     func setSearchResult(gifs: [GifDisplay]) {
+        
         self.gifs = gifs
-        tableView.reloadData()
     }
     
     func setSearchError(error: String) {
@@ -84,7 +92,18 @@ class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, U
             alert.dismiss(animated: true, completion: {})
         }))
         
-        self.navigationController?.present(alert, animated: true, completion: {})
+        present(alert, animated: true, completion: {})
+    }
+    
+    func setSearchEmpty (message: String) {
+        
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: {})
+        }))
+        
+        present(alert, animated: true, completion: {})
     }
     
     // MARK: - Text Field Delegate
@@ -96,7 +115,13 @@ class GifSearchViewController: UIViewController, GifView, UITableViewDelegate, U
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        self.gifPresenter.searchGifs(query: textField.text!)
+        guard (gifPresenter != nil) else {
+            
+            //Again, the presenter dependency should be already injected, so return
+            return
+        }
+        
+        gifPresenter!.searchGifs(query: textField.text!)
     }
     
     override func didReceiveMemoryWarning() {

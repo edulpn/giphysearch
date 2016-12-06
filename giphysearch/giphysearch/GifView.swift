@@ -17,10 +17,11 @@ struct GifDisplay {
 protocol GifView {
     
     var gifs : [GifDisplay] {get}
-    var gifPresenter : GifPresenter! {get}
+    var gifPresenter : GifPresenter? {get set}
     
     func startLoading()
     func finishLoading()
     func setSearchResult(gifs: [GifDisplay])
     func setSearchError(error: String)
+    func setSearchEmpty (message: String)
 }
