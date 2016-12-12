@@ -11,31 +11,46 @@ import UIKit
 
 class GifSearchPresenter: GifPresenter
 {
-    var view : GifView
+    var view : GifView?
     var service : GifService
     
     var gifs : [Gif] = []
     
-    required init(view: GifView, service: GifService) {
-        self.view = view
+    required init(service: GifService) {
+
         self.service = service
     }
     
     func searchGifs(query: String) {
         
-        self.view.startLoading()
+        guard (view != nil) else {
+            
+            //View should be injected by now
+            return
+        }
+        
+        view!.startLoading()
         
         if (query.isEmpty) {
-            self.service.retrieveTrendingGifs(success: { (gifs) in
+            
+            service.retrieveTrendingGifs(success: { (gifs) in
                 
                 self.gifs = gifs
-                self.view.finishLoading()
-                self.view.setSearchResult(gifs: self.gifDisplays(from: gifs))
+                self.view!.finishLoading()
+                
+                if (self.gifs.count == 0) {
+                    
+                    self.view!.setSearchEmpty(message: "No results were found.")
+                }
+                else {
+                 
+                    self.view!.setSearchResult(gifs: self.gifDisplays(from: gifs))
+                }
                 
             }, failure: { (error) in
                 
-                self.view.finishLoading()
-                self.view.setSearchError(error: error.localizedDescription)
+                self.view!.finishLoading()
+                self.view!.setSearchError(error: error.localizedDescription)
                 
             })
         }
@@ -43,18 +58,26 @@ class GifSearchPresenter: GifPresenter
             self.service.retrieveGifs(filter: query, success: { gifs in
                 
                 self.gifs = gifs
-                self.view.finishLoading()
-                self.view.setSearchResult(gifs: self.gifDisplays(from: gifs))
+                self.view!.finishLoading()
+                
+                if (self.gifs.count == 0) {
+                    
+                    self.view!.setSearchEmpty(message: "No trending gifs were found")
+                }
+                else {
+                
+                    self.view!.setSearchResult(gifs: self.gifDisplays(from: gifs))
+                }
                 
             }, failure: { error in
                 
-                self.view.finishLoading()
-                self.view.setSearchError(error: error.localizedDescription)
+                self.view!.finishLoading()
+                self.view!.setSearchError(error: error.localizedDescription)
             })
         }
     }
     
-    func gifDisplays(from: [Gif]) -> [GifDisplay] {
+    private func gifDisplays(from: [Gif]) -> [GifDisplay] {
         
         var gifDisplays : [GifDisplay] = []
         for gif in from {

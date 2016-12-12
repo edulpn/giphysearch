@@ -16,14 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let gifVC = storyboard.instantiateViewController(withIdentifier: "initialViewController") as! GifSearchViewController
-        gifVC.gifPresenter = GifSearchPresenter(view: gifVC, service: GifSearchService())
-        
-        self.window?.rootViewController = gifVC
-        self.window?.makeKeyAndVisible()
-        
         // Override point for customization after application launch.
         return true
     }

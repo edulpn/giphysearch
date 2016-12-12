@@ -24,6 +24,9 @@
 		3A8749591DF0AFC80085E7A4 /* GifSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8749581DF0AFC80085E7A4 /* GifSearchService.swift */; };
 		3A9063421DF1D5FF00F2ADCF /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9063401DF1D5FF00F2ADCF /* Kingfisher.framework */; };
 		3A9063431DF1D5FF00F2ADCF /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9063411DF1D5FF00F2ADCF /* SnapKit.framework */; };
+		3A96AA411DF7323200073879 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A96AA3F1DF7323200073879 /* Swinject.framework */; };
+		3A96AA421DF7323200073879 /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A96AA401DF7323200073879 /* SwinjectStoryboard.framework */; };
+		3A96AA441DF7393000073879 /* SwinjectStoryboard+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A96AA431DF7393000073879 /* SwinjectStoryboard+Setup.swift */; };
 		3ABE0CB81DF5C5C3004FCDC8 /* GifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE0CB61DF5C5C3004FCDC8 /* GifTableViewCell.swift */; };
 		3ABE0CB91DF5C5C3004FCDC8 /* GifTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABE0CB71DF5C5C3004FCDC8 /* GifTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		3A8749581DF0AFC80085E7A4 /* GifSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifSearchService.swift; sourceTree = "<group>"; };
 		3A9063401DF1D5FF00F2ADCF /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		3A9063411DF1D5FF00F2ADCF /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		3A96AA3F1DF7323200073879 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
+		3A96AA401DF7323200073879 /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
+		3A96AA431DF7393000073879 /* SwinjectStoryboard+Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SwinjectStoryboard+Setup.swift"; path = "Classes/SwinjectStoryboard+Setup.swift"; sourceTree = "<group>"; };
 		3ABE0CB61DF5C5C3004FCDC8 /* GifTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GifTableViewCell.swift; path = Classes/GifTableViewCell.swift; sourceTree = "<group>"; };
 		3ABE0CB71DF5C5C3004FCDC8 /* GifTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GifTableViewCell.xib; path = Classes/GifTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A96AA411DF7323200073879 /* Swinject.framework in Frameworks */,
+				3A96AA421DF7323200073879 /* SwinjectStoryboard.framework in Frameworks */,
 				3A9063421DF1D5FF00F2ADCF /* Kingfisher.framework in Frameworks */,
 				3A9063431DF1D5FF00F2ADCF /* SnapKit.framework in Frameworks */,
 				3A091EE91DC12B4F00B9DABE /* Alamofire.framework in Frameworks */,
@@ -128,6 +136,8 @@
 		3A091EE61DC12B4E00B9DABE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A96AA3F1DF7323200073879 /* Swinject.framework */,
+				3A96AA401DF7323200073879 /* SwinjectStoryboard.framework */,
 				3A9063401DF1D5FF00F2ADCF /* Kingfisher.framework */,
 				3A9063411DF1D5FF00F2ADCF /* SnapKit.framework */,
 				3A091EE71DC12B4F00B9DABE /* Alamofire.framework */,
@@ -191,6 +201,7 @@
 				3A091ECF1DC1284F00B9DABE /* LaunchScreen.storyboard */,
 				3A091ED21DC1284F00B9DABE /* Info.plist */,
 				3A091EF31DC1481200B9DABE /* Utils.swift */,
+				3A96AA431DF7393000073879 /* SwinjectStoryboard+Setup.swift */,
 			);
 			name = "Supplementary Files";
 			sourceTree = "<group>";
@@ -241,7 +252,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Eduardo Pinto";
 				TargetAttributes = {
 					3A091EC21DC1284F00B9DABE = {
@@ -308,6 +319,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwinjectStoryboard.framework",
 			);
 			outputPaths = (
 			);
@@ -323,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A091EC71DC1284F00B9DABE /* AppDelegate.swift in Sources */,
+				3A96AA441DF7393000073879 /* SwinjectStoryboard+Setup.swift in Sources */,
 				3A87494A1DF0A3490085E7A4 /* GifSearchPresenter.swift in Sources */,
 				3A8749531DF0AB9D0085E7A4 /* GifPresenter.swift in Sources */,
 				3A8749571DF0AFAF0085E7A4 /* GifService.swift in Sources */,
@@ -391,6 +405,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -440,6 +455,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

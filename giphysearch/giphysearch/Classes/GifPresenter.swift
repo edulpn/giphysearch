@@ -10,10 +10,10 @@ import Foundation
 
 protocol GifPresenter {
     
-    var view : GifView {get}
+    var view : GifView? {get set}
     var service : GifService {get}
     
-    init(view: GifView, service: GifService)
+    init(service: GifService)
     
     func searchGifs(query: String)
 }
