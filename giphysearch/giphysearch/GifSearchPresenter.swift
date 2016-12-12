@@ -40,7 +40,7 @@ class GifSearchPresenter: GifPresenter
                 
                 if (self.gifs.count == 0) {
                     
-                    self.view!.setSearchEmpty(message: "No results were found.")
+                    self.view!.setSearchEmpty(message: "No trending gifs were found.")
                 }
                 else {
                  
@@ -62,7 +62,7 @@ class GifSearchPresenter: GifPresenter
                 
                 if (self.gifs.count == 0) {
                     
-                    self.view!.setSearchEmpty(message: "No trending gifs were found")
+                    self.view!.setSearchEmpty(message: "No results were found.")
                 }
                 else {
                 
